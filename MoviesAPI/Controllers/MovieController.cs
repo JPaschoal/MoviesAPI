@@ -26,9 +26,9 @@ public class MovieController : ControllerBase
         return CreatedAtAction(nameof(GetMovie), new { id = movie.Id }, movie);
     }
     [HttpGet]
-    public IEnumerable<Movie> GetMovies([FromQuery] int skip = 0, int take = 2)
+    public IEnumerable<ReadMovieDto> GetMovies([FromQuery] int skip = 0, int take = 2)
     {
-        return _context.Movies.Skip(skip).Take(take);
+        return _mapper.Map<List<ReadMovieDto>>(_context.Movies.Skip(skip).Take(take));
     }
     [HttpGet("{id}")]
     public IActionResult GetMovie(int id)
@@ -38,7 +38,8 @@ public class MovieController : ControllerBase
         {
             return NotFound();
         }
-        return Ok(movie);
+        var movieDto = _mapper.Map<ReadMovieDto>(movie);
+        return Ok(movieDto);
     }
     [HttpPut("{id}")]
     public IActionResult UpdateMovie(int id, [FromBody] UpdateMovieDto movieDto)
