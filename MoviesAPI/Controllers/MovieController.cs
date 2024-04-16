@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using MoviesAPI.Models;
 
@@ -45,6 +46,29 @@ public class MovieController : ControllerBase
         var movie = _context.Movies.FirstOrDefault(m => m.Id == id);
         if (movie == null) return NotFound();
         _mapper.Map(movieDto, movie);
+        _context.SaveChanges();
+        return NoContent();
+    }
+    [HttpPatch("{id}")]
+    public IActionResult PartialUpdateMovie(int id, [FromBody] JsonPatchDocument<UpdateMovieDto> patchDocument)
+    {
+        var movie = _context.Movies.FirstOrDefault(m => m.Id == id);
+        if (movie == null) return NotFound();
+
+        var movieDto = _mapper.Map<UpdateMovieDto>(movie);
+        patchDocument.ApplyTo(movieDto, ModelState);
+        if (!TryValidateModel(movieDto)) return BadRequest(ModelState);
+
+        _mapper.Map(movieDto, movie);
+        _context.SaveChanges();
+        return NoContent();
+    }
+    [HttpDelete("{id}")]
+    public IActionResult DeleteMovie(int id)
+    {
+        var movie = _context.Movies.FirstOrDefault(m => m.Id == id);
+        if (movie == null) return NotFound();
+        _context.Movies.Remove(movie);
         _context.SaveChanges();
         return NoContent();
     }
