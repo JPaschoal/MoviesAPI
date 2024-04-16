@@ -22,14 +22,10 @@ To run the project, use the following command:
 The API will be available at http://localhost:5173/swagger/index.html.
 
 ## API Endpoints
-POST ```/api/movie```: Add a new movie
-GET ```/api/movie```: Get a list of movies
-GET ```/api/movie/{id}```: Get a movie by its ID
-PUT ```/api/movie/{id}```: Update a movie by its ID
-PATCH ```/api/movie/{id}```: Partially update a movie by its ID
-DELETE ```/api/movie/{id}```: Delete a movie by its ID
-Contributing
-Instructions on how to contribute to the project.
+![image](https://i.ibb.co/xLDqFCc/swaggerv1.png)
+
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 ## Author
 - Jhonatan Paschoal
