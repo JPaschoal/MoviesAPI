@@ -13,4 +13,9 @@ public class MovieController : ControllerBase
     {
         _movies.Add(movie);
     }
+    [HttpGet]
+    public IEnumerable<Movie> GetMovies()
+    {
+        return _movies;
+    }
 }
