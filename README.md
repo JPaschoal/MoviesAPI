@@ -2,7 +2,7 @@
 
 ## Description
 
-MoviesAPI is a .NET 8.0 project that provides a RESTful API for managing movies.
+MoviesAPI is a .NET 8.0 project that provides a API for managing movies.
 
 ## Installation
 
