@@ -17,4 +17,5 @@ public class Address
     public string ZipCode { get; set; }
     [Required(ErrorMessage = "The field Country is required")]
     public string Country { get; set; }
+    public virtual Cinema Cinema { get; set; }
 }
