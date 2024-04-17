@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
+using MoviesAPI.Data;
+using MoviesAPI.Data.Dtos;
 using MoviesAPI.Models;
 
 namespace MoviesAPI.Controllers;

@@ -1,4 +1,4 @@
-﻿namespace MoviesAPI;
+﻿namespace MoviesAPI.Data.Dtos;
 
 public class ReadMovieDto
 {

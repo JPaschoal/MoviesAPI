@@ -1,7 +1,7 @@
 using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
-using MoviesAPI;
+using MoviesAPI.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
