@@ -2,7 +2,7 @@
 using MoviesAPI.Data.Dtos;
 using MoviesAPI.Models;
 
-namespace MoviesAPI;
+namespace MoviesAPI.Profiles;
 
 public class MovieProfile : Profile
 {
