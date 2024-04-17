@@ -44,7 +44,7 @@ public class CinemaController : ControllerBase
     [ProducesResponseType(StatusCodes.Status200OK)]
     public IEnumerable<ReadCinemaDto> GetCinemas([FromQuery] int skip = 0, int take = 2)
     {
-        return _mapper.Map<List<ReadCinemaDto>>(_context.Cinemas.Skip(skip).Take(take));
+        return _mapper.Map<List<ReadCinemaDto>>(_context.Cinemas.Skip(skip).Take(take).ToList());
     }
     /// <summary>
     /// Get a cinema by its ID
@@ -57,12 +57,10 @@ public class CinemaController : ControllerBase
     [ProducesResponseType(StatusCodes.Status200OK)]
     public IActionResult GetCinema(int id)
     {
-        Cinema cinema = _context.Cinemas.Find(id);
-        if (cinema == null)
-        {
-            return NotFound();
-        }
-        return Ok(cinema);
+        var cinema = _context.Cinemas.FirstOrDefault(c => c.Id == id);
+        if (cinema == null) return NotFound();
+        var cinemaDto = _mapper.Map<ReadCinemaDto>(cinema);
+        return Ok(cinemaDto);
     }
     /// <summary>
     /// Update a cinema
@@ -75,11 +73,8 @@ public class CinemaController : ControllerBase
     [HttpPut("{id}")]
     public IActionResult UpdateCinema(int id, [FromBody] UpdateCinemaDto cinemaDto)
     {
-        Cinema cinema = _context.Cinemas.Find(id);
-        if (cinema == null)
-        {
-            return NotFound();
-        }
+        var cinema = _context.Cinemas.FirstOrDefault(c => c.Id == id);
+        if (cinema == null) return NotFound();
         _mapper.Map(cinemaDto, cinema);
         _context.SaveChanges();
         return NoContent();
@@ -94,11 +89,8 @@ public class CinemaController : ControllerBase
     [HttpDelete("{id}")]
     public IActionResult DeleteCinema(int id)
     {
-        Cinema cinema = _context.Cinemas.Find(id);
-        if (cinema == null)
-        {
-            return NotFound();
-        }
+        var cinema = _context.Cinemas.FirstOrDefault(c => c.Id == id);
+        if (cinema == null) return NotFound();
         _context.Cinemas.Remove(cinema);
         _context.SaveChanges();
         return NoContent();
