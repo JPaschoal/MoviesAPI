@@ -6,6 +6,8 @@ using MoviesAPI.Models;
 
 namespace MoviesAPI.Controllers;
 
+[ApiController]
+[Route("api/[controller]")]
 public class CinemaController : ControllerBase
 {
     private MovieContext _context;
