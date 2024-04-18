@@ -51,7 +51,7 @@ public class MovieController : ControllerBase
     [ProducesResponseType(StatusCodes.Status200OK)]
     public IEnumerable<ReadMovieDto> GetMovies([FromQuery] int skip = 0, int take = 2)
     {
-        return _mapper.Map<List<ReadMovieDto>>(_context.Movies.Skip(skip).Take(take));
+        return _mapper.Map<List<ReadMovieDto>>(_context.Movies.Skip(skip).Take(take).ToList());
     }
     /// <summary>
     /// Get a movie by its ID

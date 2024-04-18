@@ -24,4 +24,8 @@ public class ReadMovieDto
     /// Gets or sets the query time of the movie.
     /// </summary>
     public DateTime QueryTime { get; set; } = DateTime.Now;
+    /// <summary>
+    /// Gets or sets the session associated with the movie.
+    /// </summary>
+    public ICollection<ReadSessionDto>? Session { get; set; }
 }

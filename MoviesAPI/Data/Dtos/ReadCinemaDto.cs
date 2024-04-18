@@ -19,4 +19,8 @@ public class ReadCinemaDto
     /// Gets or sets the address of the cinema.
     /// </summary>
     public ReadAddressDto? Address { get; set; }
+    /// <summary>
+    /// Gets or sets the sessions associated with the cinema.
+    /// </summary>
+    public ICollection<ReadSessionDto>? Sessions { get; set; }
 }

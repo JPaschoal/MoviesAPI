@@ -23,5 +23,13 @@ namespace MoviesAPI.Models
         /// Gets or sets the session date.
         /// </summary>
         public virtual Movie? Movie { get; set; }
+        /// <summary>
+        /// Gets or sets the session date.
+        /// </summary>
+        public int? CinemaId { get; set; }
+        /// <summary>
+        /// Gets or sets the session date.
+        /// </summary>
+        public virtual Cinema? Cinema { get; set; }
     }
 }

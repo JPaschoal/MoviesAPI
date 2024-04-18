@@ -29,4 +29,8 @@ public class Cinema
     /// Gets or sets the address associated with the cinema.
     /// </summary>
     public virtual Address? Address { get; set; }
+    /// <summary>
+    /// Gets or sets the sessions associated with the cinema.
+    /// </summary>
+    public virtual ICollection<Session>? Sessions { get; set; }
 }
