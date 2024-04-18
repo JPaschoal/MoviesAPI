@@ -31,4 +31,8 @@ public class MovieContext : DbContext
     /// Gets or sets the addresses DbSet.
     /// </summary>
     public DbSet<Address> Addresses { get; set; }
+    /// <summary>
+    /// Gets or sets the sessions DbSet.
+    /// </summary>
+    public DbSet<Session> Sessions { get; set; }
 }

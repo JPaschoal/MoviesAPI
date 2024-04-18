@@ -33,4 +33,8 @@ public class Movie
     [Required(ErrorMessage = "Duration is required")]
     [Range(70, 600, ErrorMessage = "Duration must be between 70 and 600 minutes")]
     public int Duration { get; set; } = 0;
+    /// <summary>
+    /// Gets or sets the movie sessions.
+    /// </summary>
+    public virtual ICollection<Session>? Sessions { get; set; }
 }
