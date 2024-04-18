@@ -6,12 +6,18 @@ using MoviesAPI.Models;
 
 namespace MoviesAPI.Controllers;
 
+/// <summary>
+/// Represents the controller for managing cinemas.
+/// </summary>
 [ApiController]
 [Route("api/[controller]")]
 public class CinemaController : ControllerBase
 {
     private MovieContext _context;
     private IMapper _mapper;
+    /// <summary>
+    /// Initializes a new instance of the <see cref="CinemaController"/> class.
+    /// </summary>
     public CinemaController(MovieContext context, IMapper mapper)
     {
         _context = context;

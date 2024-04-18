@@ -4,12 +4,20 @@ using MoviesAPI.Models;
 
 namespace MoviesAPI.Data.Dtos;
 
+/// <summary>
+/// Represents the controller for address-related operations.
+/// </summary>
 [ApiController]
 [Route("api/[controller]")]
 public class AddressController : ControllerBase
 {
     private MovieContext _context;
     private IMapper _mapper;
+    /// <summary>
+    /// Initializes a new instance of the <see cref="AddressController"/> class.
+    /// </summary>
+    /// <param name="context"></param>
+    /// <param name="mapper"></param>
     public AddressController(MovieContext context, IMapper mapper)
     {
         _context = context;

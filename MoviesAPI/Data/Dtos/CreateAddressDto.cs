@@ -2,16 +2,33 @@
 
 namespace MoviesAPI.Data.Dtos;
 
+/// <summary>
+/// Represents a data transfer object for creating an address.
+/// </summary>
 public class CreateAddressDto
 {
-    [Required(ErrorMessage = "The field Street is required")]
-    public string Street { get; set; }
-    [Required(ErrorMessage = "The field Number is required")]
-    public string Number { get; set; }
-    [Required(ErrorMessage = "The field City is required")]
-    public string City { get; set; }
-    [Required(ErrorMessage = "The field State is required")]
-    public string ZipCode { get; set; }
-    [Required(ErrorMessage = "The field Country is required")]
-    public string Country { get; set; }
+    /// <summary>
+    /// The street of the address.
+    /// </summary>
+    public string Street { get; set; } = string.Empty;
+
+    /// <summary>
+    /// The number of the address.
+    /// </summary>
+    public string Number { get; set; } = string.Empty;
+
+    /// <summary>
+    /// The city of the address.
+    /// </summary>
+    public string City { get; set; } = string.Empty;
+
+    /// <summary>
+    /// The zip code of the address.
+    /// </summary>
+    public string ZipCode { get; set; } = string.Empty;
+
+    /// <summary>
+    /// The country of the address.
+    /// </summary>
+    public string Country { get; set; } = string.Empty;
 }

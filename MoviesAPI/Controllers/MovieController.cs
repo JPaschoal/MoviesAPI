@@ -7,12 +7,18 @@ using MoviesAPI.Models;
 
 namespace MoviesAPI.Controllers;
 
+/// <summary>
+/// Represents the movie controller.
+/// </summary>
 [ApiController]
 [Route("api/[controller]")]
 public class MovieController : ControllerBase
 {
     private MovieContext _context;
     private IMapper _mapper;
+    /// <summary>
+    /// Initializes a new instance of the <see cref="MovieController"/> class.
+    /// </summary>
     public MovieController(MovieContext context, IMapper mapper)
     {
         _context = context;

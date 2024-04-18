@@ -4,8 +4,14 @@ using MoviesAPI.Models;
 
 namespace MoviesAPI.Profiles;
 
+/// <summary>
+/// Represents the profile for mapping Cinema entities.
+/// </summary>
 public class CinemaProfile : Profile
 {
+    /// <summary>
+    /// Initializes a new instance of the <see cref="CinemaProfile"/> class.
+    /// </summary>
     public CinemaProfile()
     {
         CreateMap<CreateCinemaDto, Cinema>();
