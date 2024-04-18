@@ -9,6 +9,8 @@ namespace MoviesAPI.Controllers;
 /// <summary>
 /// Represents a controller for sessions.
 /// </summary>
+[ApiController]
+[Route("api/[controller]")]
 public class SessionController : ControllerBase
 {
     private MovieContext _context;
