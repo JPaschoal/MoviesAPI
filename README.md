@@ -11,7 +11,6 @@ To install the project, follow these steps:
 ```
 git clone https://github.com/JPaschoal/MoviesAPI.git
 cd MoviesAPI
-dotnet restore
 ```
 
 ## Usage
