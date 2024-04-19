@@ -22,7 +22,7 @@ To run the project, use the following command:
 The API will be available at http://localhost:5173/swagger/index.html.
 
 ## API Endpoints
-![image](https://i.ibb.co/qdKfLPW/Movie-Api-Swager.png)
+![image](https://i.ibb.co/wC1tF8Y/Screenshot-at-Apr-18-23-49-30.png)
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
