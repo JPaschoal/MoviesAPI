@@ -32,6 +32,12 @@ public class MovieContext : DbContext
             .HasOne(s => s.Movie) // tem um filme
             .WithMany(m => m.Sessions) // tem muitas sessões
             .HasForeignKey(s => s.MovieId); // fk de movie
+
+        builder.Entity<Address>()
+            .HasOne(address => address.Cinema)
+            .WithOne(cinema => cinema.Address)
+            .OnDelete(DeleteBehavior.Restrict);
+
     }
 
     /// <summary>
