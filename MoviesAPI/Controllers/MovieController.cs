@@ -45,13 +45,18 @@ public class MovieController : ControllerBase
     /// </summary>
     /// <param name="skip">The number of movies to skip</param>
     /// <param name="take">The number of movies to take</param>
+    /// <param name="cinemaName">The name of the cinema</param>
     /// <returns>A list of movies</returns>
     /// <response code="200">Returns the list of movies</response>
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    public IEnumerable<ReadMovieDto> GetMovies([FromQuery] int skip = 0, int take = 2)
+    public IEnumerable<ReadMovieDto> GetMovies([FromQuery] int skip = 0, int take = 10, string? cinemaName = null)
     {
-        return _mapper.Map<List<ReadMovieDto>>(_context.Movies.Skip(skip).Take(take).ToList());
+        if (cinemaName == null)
+        {
+            return _mapper.Map<List<ReadMovieDto>>(_context.Movies.Skip(skip).Take(take).ToList());
+        }
+        return _mapper.Map<List<ReadMovieDto>>(_context.Movies.Skip(skip).Take(take).Where(m => m.Sessions != null && m.Sessions.Any(s => s.Cinema != null && s.Cinema.Name == cinemaName)).ToList());
     }
     /// <summary>
     /// Get a movie by its ID
