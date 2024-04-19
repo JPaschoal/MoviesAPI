@@ -6,7 +6,11 @@
 public class ReadSessionDto
 {
     /// <summary>
-    /// Gets or sets the session ID.
+    /// Gets or sets the Movie ID.
     /// </summary>
-    public int Id { get; set; }
+    public int MovieId { get; set; }
+    /// <summary>
+    /// Gets or sets the Cinema ID.
+    /// </summary>
+    public int CinemaId { get; set; }
 }

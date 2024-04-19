@@ -40,13 +40,14 @@ public class SessionController : ControllerBase
     /// <summary>
     /// Get a session by its ID.
     /// </summary>
-    /// <param name="id">The ID of the session.</param>
+    /// <param name="movieId">The ID of the movie.</param>
+    /// <param name="cinemaId">The ID of the cinema.</param>
     /// <returns>The session with the given ID.</returns>
-    [HttpGet("{id}")]
+    [HttpGet("{movieId}/{cinemaId}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    public IActionResult GetSession(int id)
+    public IActionResult GetSession(int movieId, int cinemaId)
     {
-        var session = _context.Sessions.FirstOrDefault(s => s.Id == id);
+        var session = _context.Sessions.FirstOrDefault(s => s.MovieId == movieId && s.CinemaId == cinemaId);
         if (session == null) return NotFound();
         var sessionDto = _mapper.Map<ReadSessionDto>(session);
         return Ok(sessionDto);
@@ -62,6 +63,6 @@ public class SessionController : ControllerBase
         Session session = _mapper.Map<Session>(sessionDto);
         _context.Sessions.Add(session);
         _context.SaveChanges();
-        return CreatedAtAction(nameof(GetSession), new { id = session.Id }, session);
+        return CreatedAtAction(nameof(GetSession), new { movieId = session.MovieId, cinemaId = session.CinemaId }, session);
     }
 }

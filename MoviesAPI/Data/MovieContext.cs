@@ -18,6 +18,23 @@ public class MovieContext : DbContext
     }
 
     /// <summary>
+    /// Configures the movie context.
+    /// </summary>
+    protected override void OnModelCreating(ModelBuilder builder)
+    {
+        builder.Entity<Session>().HasKey(s => new { s.MovieId, s.CinemaId });
+
+        builder.Entity<Session>()
+            .HasOne(s => s.Cinema) // tem um cinema
+            .WithMany(c => c.Sessions) // tem muitas sessões
+            .HasForeignKey(s => s.CinemaId); // fk de movie
+        builder.Entity<Session>()
+            .HasOne(s => s.Movie) // tem um filme
+            .WithMany(m => m.Sessions) // tem muitas sessões
+            .HasForeignKey(s => s.MovieId); // fk de movie
+    }
+
+    /// <summary>
     /// Gets or sets the movies DbSet.
     /// </summary>
     public DbSet<Movie> Movies { get; set; }

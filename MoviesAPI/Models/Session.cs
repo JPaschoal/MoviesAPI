@@ -9,16 +9,9 @@ namespace MoviesAPI.Models
     public class Session
     {
         /// <summary>
-        /// Gets or sets the session ID.
-        /// </summary>
-        [Key]
-        [Required]
-        public int Id { get; set; }
-        /// <summary>
         /// Gets or sets the session date.
         /// </summary>
-        [Required]
-        public int MovieId { get; set; }
+        public int? MovieId { get; set; }
         /// <summary>
         /// Gets or sets the session date.
         /// </summary>
