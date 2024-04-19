@@ -44,13 +44,18 @@ public class CinemaController : ControllerBase
     /// </summary>
     /// <param name="skip">The number of cinemas to skip</param>
     /// <param name="take">The number of cinemas to take</param>
+    /// <param name="AddressId">The ID of the address</param>
     /// <returns>A list of cinemas</returns>
     /// <response code="200">Returns the list of cinemas</response>
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    public IEnumerable<ReadCinemaDto> GetCinemas([FromQuery] int skip = 0, int take = 2)
+    public IEnumerable<ReadCinemaDto> GetCinemas([FromQuery] int skip = 0, int take = 10, int? AddressId = null)
     {
-        return _mapper.Map<List<ReadCinemaDto>>(_context.Cinemas.Skip(skip).Take(take).ToList());
+        if (AddressId == null)
+        {
+            return _mapper.Map<List<ReadCinemaDto>>(_context.Cinemas.Skip(skip).Take(take).ToList());
+        }
+        return _mapper.Map<List<ReadCinemaDto>>(_context.Cinemas.Where(c => c.AddressId == AddressId).Skip(skip).Take(take).ToList());
     }
     /// <summary>
     /// Get a cinema by its ID
